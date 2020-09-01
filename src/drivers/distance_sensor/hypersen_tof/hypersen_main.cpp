@@ -146,23 +146,23 @@ extern "C" __EXPORT int hypersen_tof_main(int argc, char *argv[])
 
 		default:
 			PX4_WARN("Unknown option");
-			return HypersenTOF::usage();
+			return hypersen_tof::usage();
 		}
 	}
 
 	if (myoptind >= argc) {
-		return HypersenTOF::usage();
+		return hypersen_tof::usage();
 	}
 
 	if (!strcmp(argv[myoptind], "start")) {
-		return HypersenTOF::start(port, rotation);
+		return hypersen_tof::start(port, rotation);
 
 	} else if (!strcmp(argv[myoptind], "status")) {
-		return HypersenTOF::status();
+		return hypersen_tof::status();
 
 	} else if (!strcmp(argv[myoptind], "stop")) {
-		return HypersenTOF::stop();
+		return hypersen_tof::stop();
 	}
 
-	return HypersenTOF::usage();
+	return hypersen_tof::usage();
 }

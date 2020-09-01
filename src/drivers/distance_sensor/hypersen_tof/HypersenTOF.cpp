@@ -103,23 +103,15 @@ HypersenTOF::collect()
 	reading_msg *msg {nullptr};
 	msg = (reading_msg *)_buffer;
 
-	if (msg->slave_addr != MODBUS_SLAVE_ADDRESS ||
-	    msg->function != MODBUS_READING_FUNCTION) {
 
-		PX4_ERR("slave address or function read error");
-		perf_count(_comms_error);
-		perf_end(_sample_perf);
-		return measure();
-	}
+	//const uint16_t crc16 = crc16_calc(_buffer, buffer_size - 2);
 
-	const uint16_t crc16 = crc16_calc(_buffer, buffer_size - 2);
-
-	if (crc16 != msg->crc) {
+	/*if (crc16 != msg->crc) {
 		PX4_ERR("crc error");
 		perf_count(_comms_error);
 		perf_end(_sample_perf);
 		return measure();
-	}
+	}*/
 
 	// NOTE: little-endian support only.
 	uint16_t distance_mm = (msg->distance_high_byte << 8 | msg->distance_low_byte);

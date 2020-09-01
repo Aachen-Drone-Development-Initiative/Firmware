@@ -2,5 +2,5 @@ module_name: Hypersen TOF Rangefinder
 serial_config:
     - command: hypersen_tof start -d ${SERIAL_DEV}
       port_config_param:
-        name: SENS_HYPERSEN_CFG
+        name: SENS_HYPER_CFG
         group: Sensors
